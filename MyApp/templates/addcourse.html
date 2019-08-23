@@ -1,0 +1,21 @@
+{%extends 'main.html'%}
+{% block title %} 
+    Добавление
+{%endblock%}
+{% block content %}     
+    <form action="/addcourse/" method="POST">
+        {% csrf_token %}
+        
+        <p><b>Название:</b> <input type = "text" name = "name"></p>
+        <b>Учитель:</b>
+        {% csrf_token %}
+        <select name="select1" size="1">
+            <option value="">Нет</option>
+            {% for cours in teachers%}
+                <option value="{{ cours.id }}">{{cours.first_name}} {{cours.last_name}}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <input type="submit" value="Добавить">
+    </form>
+    {%endblock%}

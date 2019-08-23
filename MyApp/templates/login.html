@@ -1,0 +1,30 @@
+<html>
+    <head>
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body text-align: center;>
+        
+        <h1> Авторизация</h1>
+        <form action = '/login/' method="POST">
+            {% csrf_token %}
+            <style type="text/css">
+            div { 
+                width: 40%; /* Ширина */
+            }
+            </style>
+            <div>
+            <p><input type="text" name="username" id="inputEmail" class="form-control" placeholder="Логин" required="" autofocus=""> </p>
+            {% csrf_token %}
+            <p><input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль" required=""> </p>
+            <button class="btn btn btn-primary btn-block" style="background-color: #0A6187; border: none;" type="submit">Вход</button>
+            </div>
+        </form>
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+        <a href = "/register/" size = 6 >Зарегистрироваться</a> 
+    
+    </body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% block title %} 
+        Редактирование
+{%endblock%}
+{% block content %} 
+<a href="/student?id={{ studentes.id }}">Назад</a>
+<h1>Изменить: {{ studentes.first_name }} {{ studentes.last_name }}</h1>
+
+<form action="/edit/?id={{ studentes.id }}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    
+    <p><b>Имя:</b> <input type = "text" name = "first_name" value = "{{studentes.first_name}}"/></p>
+    <p><b>Фамилия:</b> <input type = "text" name = "last_name" value = "{{studentes.last_name}}"/></p>
+    <p><b>Email:</b> <input type = "email" name = "email" value = "{{studentes.email}}"/><br></p>
+    <p><b>Telegram:</b> <input type = "text" name = "telegram"><br></p>
+    <p><b>Комната:</b> <input type = "text" name = "room" value = "{{studentes.room}}"/><br></p>
+    <p><b>Лицо:</b> <input type = "file" name = "avatar"><br></p>
+    <b>Направление:</b>
+    {% csrf_token %}
+    <select name="select1" size="1" >
+        <option value="">Нет</option>
+        {% for cours in courses%}
+            <option value="{{ cours.id }}">{{cours.name}}</option>
+        {% endfor %}
+    </select>
+    <p>
+    <b>Доролнения:</b><input type = "textfield" name = "discription" value = "{{studentes.discription}}"/>
+    </p>
+
+    <input type="submit" value="Сохранить">
+</form>
+
+{%endblock%}

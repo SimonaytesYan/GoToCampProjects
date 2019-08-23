@@ -1,0 +1,27 @@
+.lol{
+display: none
+}
+#podskazka
+{  
+   background-color: #FFFFFF;
+   border: 1px #FFFFFF solid;
+   border-radius: 3px;
+
+    font-family: Arial;
+    font-weight: normal;
+    text-align: center;
+    color: #FF7361;
+    font-size: 16px;
+    line-height: 1.2;
+    margin: 0;
+
+   visibility: hidden;
+   position: absolute;
+   padding-top: 7px;
+   left: 135px;
+   top: 138px;
+   width: 248px;
+   height: 27px;
+   z-index: 9999;
+   cursor: pointer !important;
+}

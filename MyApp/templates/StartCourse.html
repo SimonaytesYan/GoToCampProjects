@@ -1,0 +1,18 @@
+{% extends 'main.html' %}
+{% block title %}Участники{% endblock %}
+
+{% block content %}
+<h1>Направления</h1>
+    <ul>
+        {% for i in courses %}
+        <li><a href="/course/?id={{ i.id }}">
+            {{i.name}}
+        </li>
+        {% endfor %}
+    </ul>
+    <form action="/addcourse">
+        <button type "button" name = "Button">
+            Добавить курс
+        </button>
+    </form>
+{% endblock %}

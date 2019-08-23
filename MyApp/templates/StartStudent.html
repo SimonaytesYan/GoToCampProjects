@@ -1,0 +1,38 @@
+{% extends 'main.html' %}
+{% block title %}Участники{% endblock %}
+
+{% block content %}
+<h1 >Участники</h1>
+<form class="form-inline my-2 my-lg-0" >
+    <input class="form-control mr-sm-2" style="margin-bottom: 10px; width: 50%;" type="search" placeholder="Найди участника" aria-label="Search" id="search">
+</form>
+<ul id='students' class="list-group">
+  {% for student  in students%}
+    <li class="list-group-item"><a style='text-decoration: none;' href="/student?id={{student.id}}">{{student.first_name}} {{student.last_name}}</a></li>
+  {% endfor %}
+</ul>
+<form action="/add">
+            <button type "button" name = "Button">
+                Добавить участника
+            </button>
+        </form>
+        <script>
+            const input = document.getElementById('search');
+            input.addEventListener('keyup',() => {
+            const filter = input.value.toUpperCase(),
+            ul = document.getElementById("students"),   
+            li = ul.getElementsByTagName('li');
+
+            for (i = 0; i < li.length; i++) {
+                let  a = li[i].getElementsByTagName("a")[0];
+                if (a.innerHTML.toUpperCase().indexOf(filter) > -1) {
+                    li[i].style.display = "";
+                } else {
+                    li[i].style.display = "none";
+                }
+            }
+            })
+        </script>
+        
+        
+{% endblock %}

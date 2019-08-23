@@ -1,0 +1,17 @@
+{% extends 'main.html' %}
+{% block title %} 
+        Участник
+{%endblock%}
+{% block content %} 
+            <h1>{{ course.name }}</h1><br>
+            <b>Преподаватель:   </b> {{ course.teacher}}<br>
+            <a href="/editcourse?id={{ course.id }}"> Редактировать </a>
+            <a href="/deletecourse?id={{ course.id }}"  onclick="return confirm('Точно удалить?')"> Удалить </a>
+            <p><h3>Участники:</h3>
+            {%for i in studentes%}
+            <li><a href="/student?id={{ i.id }}">
+                {{i.first_name}} {{i.last_name}}    
+            </li>
+            {%endfor%}
+            </p>
+{%endblock%}

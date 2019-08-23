@@ -1,0 +1,30 @@
+<html>
+    <head>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" 
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Регистрация</h1>
+        <form action = "/register/" method = "POST">
+            <style type="text/css">
+                div { 
+                    width: 40%; /* Ширина */
+    
+                }
+                </style>
+                <div>
+                        {% csrf_token %}
+                <p><input type="text" name="username" id="inputEmail" class="form-control" placeholder="Логин"> </p>
+                
+                <p><input type="password" id="inputPassword" name="password" class="form-control" placeholder="Пароль"> </p>
+
+                <p><input type="email" id="inputPassword" name="email" class="form-control" placeholder="Почта"> </p>
+                
+                <p><input type="text" id="inputTelegram" name="telegram" class="form-control" placeholder="Телеграм без собачки"> </p>
+
+                <button class="btn btn btn-primary btn-block" style="background-color: #0A6187; border: none;" type="submit">Вход</button>
+                </div>
+        </form>
+        <a href = "/">Назад</a>
+    </body>
+</html>

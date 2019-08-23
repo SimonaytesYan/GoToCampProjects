@@ -1,0 +1,6 @@
+avatars/
+get_file_path/
+
+bot.py
+brain/settings.py
+db.sqlite3

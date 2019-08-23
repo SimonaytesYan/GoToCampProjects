@@ -1,0 +1,36 @@
+{% extends 'main.html' %}
+{% block title %} 
+        Участник
+{%endblock%}
+{% block content %}
+            <h1>{{ student.first_name }} {{ student.last_name }}</h1><br>
+            {%if student.photo.url != ""%}
+                <img width = "160" height = "160" src = "/{{student.photo.url}}"><br>
+            {%endif%}
+            <b>Комната: </b>{{ student.room }}  <br>
+            <b>Email:   </b> {{ student.email }}<br>
+            <b>Курс:    </b> {{ student.cours }}<br>
+            {%if ticket.is_it%}
+                <b>Тикет: </b> {{ student.cours }}<br>
+            {%endif%}
+            <p>
+                {{ student.discription }}
+            </p>
+            <h3>Комментарии:</h3>
+            {% for comment in comments %}
+                <li>
+                    
+                    {{comment.user_from}}: <br>
+                    <p>{{comment.text}}</p>
+                    
+                </li>
+            {% endfor %}
+
+            Написать комментарий:<br>
+            <form action="/student/?id={{ student.id }}" method="POST">
+                {% csrf_token %}
+                <input type = "textField" name = "text"<br>
+
+                <input type="submit" value="Оставить комментарий">
+            </form>
+{%endblock%}

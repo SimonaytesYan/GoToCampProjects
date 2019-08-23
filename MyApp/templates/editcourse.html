@@ -1,0 +1,25 @@
+{% extends 'main.html' %}
+{% block title %} 
+        Редактирование курса
+{%endblock%}
+{% block content %} 
+<a href="/course/?id={{ course.id }}">Назад</a>
+<h1>Изменить: {{ courses.name }}</h1>
+
+<form action="/editcourse/?id={{ course.id }}" method="post">
+    {% csrf_token %}
+    
+    <p><b>Название:</b> <input type = "text" name = "name" value = "{{course.name}}"/></p>
+    <b>Преподаватель:</b>
+    {% csrf_token %}
+    <select name="select1" size="1" >
+        <option value="">Нет</option>
+        {% for i in teachers%}
+            <option value="{{ i.id }}">{{i.first_name}} {{i.last_name}}</option>
+        {% endfor %}
+    </select><br>
+
+    <input type="submit" value="Сохранить">
+</form>
+
+{%endblock%}
